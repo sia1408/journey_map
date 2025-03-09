@@ -140,10 +140,10 @@ if st.button("Start Training 🚀"):
     st.dataframe(sample_qtable.reshape(-1, 2), column_config={0: "Stick", 1: "Hit"})
 
 if st.session_state.trained:
-    toggle_view = st.checkbox("View training for each episode", value=False)
+    toggle_view = st.checkbox("View training for each episode (click again to collapse)", value=False)
     if toggle_view:
         for i, steps in enumerate(st.session_state.all_episode_steps):
-            exp = st.expander(f"🔍 View Steps of Episode {i + 1}", expanded=True)
+            exp = st.expander(f"🔍 View Steps of Episode {i + 1}", expanded=False)
             for s in steps:
                 st_str = f"**State:** Player sum={s[0][0]}, Dealer card={s[0][1]}, Usable Ace={s[0][2]}  \n"
                 st_str += f"**Action:** {'Hit' if s[1] else 'Stick'}  \n"
@@ -170,3 +170,5 @@ if st.button("Run Single Round"):
     else:
         st.error("Agent loses! 😞")
     st.write(f"Final reward: {reward}")
+
+import streamlit as st
