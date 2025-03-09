@@ -207,40 +207,15 @@ st.markdown("""
 
 #the rl methods part:
 
-st.header("The 2 Main Types of RL Methods")
-
-st.markdown("""
-Reinforcement Learning algorithms fall into two main categories:
-""")
-
-st.markdown("""
-| **Method Type**    | **Description** | **Use Case** | **Example Algorithms** |
-|-------------------|----------------|-------------|------------------------|
-| **Policy-Based** | Directly learns a **policy** (mapping states to actions). Instead of estimating values, the agent **learns the best action to take** in each state. | Used in **continuous action spaces** where value-based methods struggle. | Policy Gradient, REINFORCE, PPO, A3C |
-| **Value-Based**  | Learns a **value function** that estimates the expected future rewards for state-action pairs. The agent **chooses the action leading to the highest value**. | Best for **discrete action spaces**, like in Blackjack. | Q-Learning, Deep Q-Networks (DQN), SARSA |
-""")
-
 st.markdown("---")
 
-st.markdown("""
-### But...what is a **value function**?
-A **value function** predicts how good a given state (or state-action pair) is.  
-- It estimates **expected future rewards** starting from that state.
-- Helps the agent decide **which state-action pair is most valuable**.
-
-In our Blackjack demo, we used **Q-values**, which is a type of value function:
-- The **Q-value** of a state-action pair tells the agent the **expected reward** for taking that action in that state.
-""")
-
-
-#new
-
-st.markdown("""
-
-Reinforcement Learning (RL) methods can be broadly categorized into two approaches:
-""")
-
 st.header(" Two Approaches to Reinforcement Learning")
+
+left_co, cent_co, last_co = st.columns([1,5,1])
+with cent_co:
+    st.image("pages/approaches.png")
+    st.markdown("<p style='text-align: center; font-style: italic;'> Image courtesy of Hugging Face</p>", 
+                unsafe_allow_html=True)
 
 st.markdown("""
 RL algorithms fall into two broad categories:  
@@ -266,10 +241,12 @@ st.header("Understanding Value Functions")
 st.markdown("""
 To make smarter decisions, an RL agent needs to evaluate how "good" or "bad" a state or action is. This is where **value functions** come in.
 
-A **value function** estimates the **expected future reward** an agent will receive starting from a given state (or state-action pair).  
+A **value function** estimates the **expected future reward** an agent will receive starting from a given state (or state-action pair).
+
+In our Blackjack demo, we used **Q-values**, which is a type of value function:
 
 ### **Q-values**  
-- If you recall, we had a table of values in the previous page. Tht was the **Q-table**. The Q-table kept record of **Q-values**; values that represent the expected reward for taking a specific action in a given state.
+- If you recall, we had a table of values in the previous page. That was the **Q-table**. The Q-table kept record of **Q-values**; values that represent the expected reward for taking a specific action in a given state.
 It kept track of these values for every possible state-action pair.
 - The agent updates this table over time, thereby improving its decision-making process.
 
@@ -283,20 +260,21 @@ In our Blackjack example, we used **Q-learning**, a **value-based RL method** th
 
 Every time the agent takes an action, it updates the Q-table using the **Q-learning update rule**:
 
-\[
-Q(s,a) \leftarrow Q(s,a) + α \times [reward + γ \times max(Q(s',a')) - Q(s,a)] (I'll have to make it render the latex for this)
-\]
-
-Where:
-- **\( Q(s,a) \)** = Current Q-value (expected reward for taking action **a** in state **s**).
-- **\( α \) (alpha)** = Learning rate (how quickly we adjust to new information).
-- **\( reward \)** = Reward received from the environment.
-- **\( γ \) (gamma)** = Discount factor (importance of future rewards).
-- **\( s' \)** = The new state after taking action.
-- **\( max(Q(s',a')) \)** = The best possible reward expected from the next state.
-
----
 """)
+
+st.latex(r"""
+Q(s,a) \leftarrow Q(s,a) + \alpha \times \left[ reward + \gamma \times \max(Q(s',a')) - Q(s,a) \right]
+""")
+
+st.markdown("""
+Where:""")
+st.latex(r"Q(s,a) = \text{Current Q-value (expected reward for taking action } a \text{ in state } s\text{.)}")
+st.latex(r"\alpha = \text{Learning rate (controls how much new information overrides old information.)}")
+st.latex(r"reward = \text{Immediate reward received from the environment.}")
+st.latex(r"\gamma = \text{Discount factor (determines how much future rewards matter.)}")
+st.latex(r"s' = \text{The new state after taking action.}")
+st.latex(r"\max(Q(s',a')) = \text{The highest possible future Q-value from the next state.}")
+
 st.markdown("""
 Specifically, our agent followed this process:
 
@@ -322,26 +300,25 @@ st.header("Extending Q-Learning: Deep Q-Networks (DQN)")
 st.markdown("""
 So far, Q-learning has worked well for **small environments** like Blackjack, where we can store all Q-values in a table.
 
-But what happens when:
-- The state space is **too large** (e.g., video games, robotics).
-- We can't explicitly store a Q-table for **every possible state**?
+But what happens when the state space is **too large**; say, video games?
+We can't possibly store a Q-table for **every possible state**?
 
 #### **Enter Deep Q-Networks (DQN)**  
 
 Instead of a Q-table, **DQN** uses a **deep neural network** to approximate Q-values.
 
 This is useful because Deep Q Learning:
-- Handles **high-dimensional, complex environments** (e.g., Atari games, robotics).
+- Handles **high-dimensional, complex environments** (such as Atari games).
 - Learns from **raw pixels or sensor inputs**, instead of predefined states.
 - Generalizes across **many unseen states**, instead of memorizing a table.
 
 ---
 """)
 
-st.header("🚀 Where to Go Next?")
+st.header("Where to Go Next?")
 
 st.markdown("""
-Hopefully our RL intro has hooked you onto exploring RL further. (I'll add why we need more people in RL) here are some great next steps to deepen your understanding:
+Hopefully our RL intro has hooked you onto exploring RL further. Here are some great next steps to deepen your understanding:
 
 📌 **[Building AlphaZero from Scratch](https://suragnair.github.io/posts/alphazero.html)**  
 _Develop a chess-playing AI using deep RL and Monte Carlo tree search._
