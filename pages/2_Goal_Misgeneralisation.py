@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title("RL Failure Modes: Goal Misgeneralization & Reward Hacking")
+st.title("RL Failure Mode: Goal Misgeneralization")
 
 st.markdown("""
 So far we've understood that modern reinforcement learning (RL) agents optimize their actions by maximizing rewards within their environments. """)
@@ -15,7 +15,7 @@ Two critical unintended behaviors often emerge:
 
 st.markdown(""" These failures can look deceptively subtle in controlled settings,
 yet they pose **significant risks** when deploying AI 
-in real-world scenarios. Let's start by diving deep into
+in real-world scenarios. In this deep-dive, we are going to explore
 **Goal Misgeneralization** and see how even *correctly specified* 
 reward functions can yield unexpected agent behavior.
 """)
