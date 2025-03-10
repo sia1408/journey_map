@@ -164,6 +164,4 @@ because the agent’s problem isn't misunderstanding the reward, but misundersta
 
 As we've only seen a glimpse of, in high-stakes situations, this could be catastrophic.
 
-That is exactly why we need further research in this field. 
-
-Next, we'll examine another subtle yet dangerous failure mode: **Reward Hacking**. """) # I'm thinking I'll add this to a new page?
+That is exactly why we need further research in this field. """)
