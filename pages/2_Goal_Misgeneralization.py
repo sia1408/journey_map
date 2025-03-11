@@ -153,7 +153,7 @@ st.video("https://www.youtube.com/watch?v=K8p8_VlFHUk", start_time=580)
 st.markdown("""
 Initially, this seems aligned— good actions make the scientist happy. However, if the scientist ever becomes mistaken or biased, the AI might continue to pursue the scientist’s approval rather than true morality.
 
-**Even carefully constructed reward functions can lead to serious misalignment if the agent overgeneralizes a proxy (human approval), instead of internalizing genuine ethical principles.**
+**Even carefully constructed specifications can lead to serious misalignment if the agent overgeneralizes a proxy (human approval), instead of internalizing genuine ethical principles.**
 """)
 
 st.header("Takeaways")
@@ -164,4 +164,4 @@ because the agent’s problem isn't misunderstanding the reward, but misundersta
 
 As we've only seen a glimpse of, in high-stakes situations, this could be catastrophic.
 
-That is exactly why we need further research in this field. """)
+Next, we'll examine another subtle yet dangerous failure mode: Reward Hacking.""")
