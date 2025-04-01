@@ -15,8 +15,8 @@ The goal? Maximize total rewards over time.""")
 st.markdown("""We'll explore RL with a simple and intuitive example: **the game of Blackjack**.
 
 ### 🃏 Blackjack for noobs
-- Blackjack is a card game aiming to **have your card sum as close to 21 as possible, without exceeding it.**
-- Players compete against a dealer, not each other.
+- Blackjack is a card game where you aim to **have your card sum as close to 21 as possible, without exceeding it.**
+- Players compete against a dealer to win.
 
 Let's see if we teach a model to maximise its chances of winning each time.
 
@@ -27,19 +27,27 @@ Let's see if we teach a model to maximise its chances of winning each time.
   - **+1** if the agent wins (beats the dealer without exceeding 21).
   - **-1** if the agent loses (exceeds 21 or dealer is closer to 21).
   - **0** if it's a draw (tie with the dealer).
-- **Actions** -- The model can either choose to:
+- **Actions**: The model can either choose to:
   - **Hit**: Take another card. This increases your total. It's risky but potentially rewarding.
   - **Stick**: Stop taking additional cards, keep your current hand and letting the dealer play instead, hoping it beats the dealer.""")
 
 st.markdown("""
-In reinforcement learning, an **action space** defines the set of all possible actions an agent can take.
-Because in Blackjack you can only 'Hit' or 'Stick', it uses a **discrete action space**, meaning the agent chooses from a fixed set of actions. Some environments, like self-driving cars for example, have **continuous action spaces**, where actions can take on any value within a range (say, steering angle).
+In reinforcement learning, an ***action space*** defines the set of all possible actions an agent can take.
+""")
+            
+st.markdown("""
+Because in Blackjack you can only 'Hit' or 'Stick', we say that it uses a **discrete action space**-- the agent chooses from a fixed set of actions.
+""")
+st.markdown("""
+Some environments, like self-driving cars for example, have **continuous action spaces**, where actions can take on any value within a range (say, steering angle).
+""")
+st.markdown("""
 Discrete spaces are simpler to work with, which makes Blackjack a great starting point for learning how agents explore and learn policies.
 """)
 
 
 st.markdown("""
-Every round, your agent evaluates the *state* of the environment—in this case, the cards on the table—and chooses an action like "hit" or "stick."
+Every round, your agent evaluates the **state** of the environment—in this case, the cards on the table—and chooses an action like "hit" or "stick."
 
 In reinforcement learning, a **state** is a complete description of the environment—nothing relevant is hidden. An *observation*, on the other hand, is only a partial description of the true state, and may omit information.
 
