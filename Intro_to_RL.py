@@ -7,11 +7,14 @@ import matplotlib.pyplot as plt
 st.title("Reinforcement Learning: The Basics")
 
 st.markdown("""
-Reinforcement Learning (RL) is a type of machine learning where an **agent** learns to make decisions by performing actions and receiving rewards or penalties from its **environment**. The goal? Maximize total rewards over time.
+Reinforcement Learning (RL) is a type of machine learning where an **agent** learns to make decisions by performing actions and receiving rewards or penalties from its **environment**.""")
 
-We'll explore RL with a simple and intuitive example: **the game of Blackjack**.
+st.markdown("""
+The goal? Maximize total rewards over time.""")
 
-### 🃏 **What is Blackjack?**
+st.markdown("""We'll explore RL with a simple and intuitive example: **the game of Blackjack**.
+
+### 🃏 Blackajack for noobs**
 - Blackjack is a card game aiming to **have your card sum as close to 21 as possible, without exceeding it.**
 - Players compete against a dealer, not each other.
 
@@ -20,19 +23,39 @@ Let's see if we teach a model to maximise its chances of winning each time.
 ### **But first, some terms you need to know...**
 - **Agent**: The player (model making decisions).
 - **Environment**: The Blackjack game scenario.
-- **Actions** -- The model can either choose to:
-  - **Hit**: Take another card. This increases your total. It's risky but potentially rewarding.
-  - **Stick**: Stop taking additional cards, keep your current hand and letting the dealer play instead, hoping it beats the dealer.
 - **Rewards**:
   - **+1** if the agent wins (beats the dealer without exceeding 21).
   - **-1** if the agent loses (exceeds 21 or dealer is closer to 21).
   - **0** if it's a draw (tie with the dealer).
+- **Actions** -- The model can either choose to:
+  - **Hit**: Take another card. This increases your total. It's risky but potentially rewarding.
+  - **Stick**: Stop taking additional cards, keep your current hand and letting the dealer play instead, hoping it beats the dealer.
+In reinforcement learning, an **action space** defines the set of all possible actions an agent can take.
+Because in Blackjack you can only 'Hit' or 'Stick', it uses a **discrete action space**, meaning the agent chooses from a fixed set of actions. Some environments, like self-driving cars for example, have **continuous action spaces**, where actions can take on any value within a range (say, steering angle).
+Discrete spaces are simpler to work with, which makes Blackjack a great starting point for learning how agents explore and learn policies.
 """)
 
-st.markdown("""
-Every round, your **agent** evaluates the **state** (current cards) and decides the best **action** to take. Over time, the agent learns from rewards and penalties, improving its **strategy** or **policy**.
 
-In the following sections, you'll see exactly how an RL agent learns to play Blackjack using a method called **Q-learning**.
+st.markdown("""
+Every round, your agent evaluates the *state* of the environment—in this case, the cards on the table—and chooses an action like "hit" or "stick."
+
+In reinforcement learning, a **state** is a complete description of the environment—nothing relevant is hidden. An *observation*, on the other hand, is only a partial description of the true state, and may omit information.
+
+When the agent has access to the full state, the environment is said to be **fully observed**. When it only receives partial observations, it’s a **partially observed environment**— often requiring memory, inference or other tricks to make good decisions.
+
+In this demo, we simplify Blackjack to be fully observed. The agent's state includes everything it needs to act optimally:
+
+- The total value of its hand
+
+- Whether it has a usable ace
+
+- The dealer's visible card
+
+We also assume an infinite deck (cards drawn with replacement), so the agent doesn't need to track which cards have been played. There's no hidden information relevant to the decision—so the agent's "observation" is treated as the full "state."
+
+Contrast this with real-life where Blackjack is partially observed: the dealer's second card is hidden, the deck depletes over time, and smart players use memory (like card counting) to gain an edge. Decision-making in such environments is harder because the agent has to infer or estimate the true state of the game from incomplete information.
+
+In the following sections, we’ll explore how the agent learns an optimal policy by estimating long-term rewards for each state-action pair through interaction with the environment, and thereby learns to win more consistently.
 """)
 
 st.title("Live training Demo")
@@ -43,10 +66,16 @@ Let's watch a Reinforcement Learning agent learn how to play Blackjack through *
 ### 🎛️ Interactive Parameters
 Open the sidebar by clicking the **›** icon to the left.
 - Adjust these parameters to see how they impact the agent's learning:
-    - **Episodes**: How many games the agent plays to learn.
-    - **Learning Rate (α)**: How quickly the agent updates its knowledge based on new experiences.
-    - **Discount Factor (γ)**: Importance of future rewards.
-    - **Exploration Rate (ε)**: Probability of exploring random actions vs. using known best actions.
+    - **Episodes**: In reinforcement learning, an episode is a complete sequence of steps taken by an agent—from the initial state to a terminal state (like winning, losing, or reaching a time limit).
+    It’s one full trial where the agent interacts with the environment, makes decisions, receives rewards, and learns from the outcome.
+    Think of it as a single trial-and-error run, where the agent tries a strategy, sees how it goes, and uses that experience to improve next time.
+    - **Learning Rate (α)**: Controls how much new information overrides old knowledge.
+    A high learning rate means the agent quickly adapts based on recent rewards. A low rate makes it learn more cautiously, averaging over time.
+    Think of it as how fast the agent "trusts" new experiences.
+    - **Discount Factor (γ)**: Determines how much the agent cares about future rewards compared to immediate ones.
+    A value close to 1 means the agent values long-term gains whereas a value near 0 makes the agent pursue quick wins.
+    - **Exploration Rate (ε)**: Sets the probability that the agent tries something new instead of picking what it currently thinks is best.
+    Higher ε means more random moves (exploration); lower ε means the agent sticks to what it already knows (exploitation).
 """)
 
 if "trained" not in st.session_state:
@@ -170,5 +199,3 @@ if st.button("Run Single Round"):
     else:
         st.error("Agent loses! 😞")
     st.write(f"Final reward: {reward}")
-
-import streamlit as st
