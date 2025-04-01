@@ -12,29 +12,40 @@ Reinforcement Learning (RL) is a type of machine learning where an **agent** lea
 st.markdown("""
 The goal? Maximize total rewards over time.""")
 
-st.markdown("""We'll explore RL with a simple and intuitive example: **the game of Blackjack**.
+st.markdown("""
+We'll explore RL with a simple and intuitive example: **the game of Blackjack**.<br><br>
 
-### 🃏 Blackajack for noobs**
-- Blackjack is a card game aiming to **have your card sum as close to 21 as possible, without exceeding it.**
-- Players compete against a dealer, not each other.
+### 🃏 Blackjack for noobs
 
-Let's see if we teach a model to maximise its chances of winning each time.
+- Blackjack is a card game aiming to **have your card sum as close to 21 as possible, without exceeding it.**<br><br>
 
-### **But first, some terms you need to know...**
-- **Agent**: The player (model making decisions).
-- **Environment**: The Blackjack game scenario.
-- **Rewards**:
-  - **+1** if the agent wins (beats the dealer without exceeding 21).
-  - **-1** if the agent loses (exceeds 21 or dealer is closer to 21).
-  - **0** if it's a draw (tie with the dealer).
-- **Actions** -- The model can either choose to:
-  - **Hit**: Take another card. This increases your total. It's risky but potentially rewarding.
-  - **Stick**: Stop taking additional cards, keep your current hand and letting the dealer play instead, hoping it beats the dealer.
-In reinforcement learning, an **action space** defines the set of all possible actions an agent can take.
-Because in Blackjack you can only 'Hit' or 'Stick', it uses a **discrete action space**, meaning the agent chooses from a fixed set of actions. Some environments, like self-driving cars for example, have **continuous action spaces**, where actions can take on any value within a range (say, steering angle).
+- Players compete against a dealer, not each other.<br><br>
+
+Let's see if we can teach a model to maximise its chances of winning each time.<br><br>
+
+### **But first, some terms you need to know...**<br><br>
+
+- **Agent**: The player (model making decisions).<br><br>
+
+- **Environment**: The Blackjack game scenario.<br><br>
+
+- **Rewards**:<br>
+  - **+1** if the agent wins (beats the dealer without exceeding 21).<br>
+  - **-1** if the agent loses (exceeds 21 or dealer is closer to 21).<br>
+  - **0** if it's a draw (tie with the dealer).<br><br>
+
+- **Actions** – The model can either choose to:<br>
+  - **Hit**: Take another card. This increases your total. It's risky but potentially rewarding.<br>
+  - **Stick**: Stop taking additional cards, keep your current hand and let the dealer play instead, hoping it beats the dealer.<br><br>
+
+In reinforcement learning, an **action space** defines the set of all possible actions an agent can take.<br><br>
+
+Because in Blackjack you can only 'Hit' or 'Stick', it uses a **discrete action space**, meaning the agent chooses from a fixed set of actions.<br><br>
+
+Some environments, like self-driving cars for example, have **continuous action spaces**, where actions can take on any value within a range (say, steering angle).<br><br>
+
 Discrete spaces are simpler to work with, which makes Blackjack a great starting point for learning how agents explore and learn policies.
-""")
-
+""", unsafe_allow_html=True)
 
 st.markdown("""
 Every round, your agent evaluates the *state* of the environment—in this case, the cards on the table—and chooses an action like "hit" or "stick."
