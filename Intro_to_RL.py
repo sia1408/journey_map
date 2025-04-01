@@ -31,6 +31,8 @@ Let's see if we teach a model to maximise its chances of winning each time.
   - **Hit**: Take another card. This increases your total. It's risky but potentially rewarding.
   - **Stick**: Stop taking additional cards, keep your current hand and letting the dealer play instead, hoping it beats the dealer.""")
 
+st.markdown(""" ####Action Spaces""")
+
 st.markdown("""
 In reinforcement learning, an ***action space*** defines the set of all possible actions an agent can take.
 """)
@@ -45,9 +47,9 @@ st.markdown("""
 Discrete spaces are simpler to work with, which makes Blackjack a great starting point for learning how agents explore and learn policies.
 """)
 
-
+st.markdown(""" #### State and Observations""")
 st.markdown("""
-Every round, your agent evaluates the **state** of the environment—in this case, the cards on the table—and chooses an action like "hit" or "stick."
+Every round, your agent evaluates the **state** of the environment—in this case, the cards on the table—and chooses an action like "Hit" or "Stick."
 
 In reinforcement learning, a **state** is a complete description of the environment—nothing relevant is hidden. An *observation*, on the other hand, is only a partial description of the true state, and may omit information.
 
