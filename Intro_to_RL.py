@@ -31,7 +31,7 @@ Let's see if we teach a model to maximise its chances of winning each time.
   - **Hit**: Take another card. This increases your total. It's risky but potentially rewarding.
   - **Stick**: Stop taking additional cards, keep your current hand and letting the dealer play instead, hoping it beats the dealer.""")
 
-st.markdown(""" ####Action Spaces""")
+st.markdown(""" #### Action Spaces""")
 
 st.markdown("""
 In reinforcement learning, an ***action space*** defines the set of all possible actions an agent can take.
