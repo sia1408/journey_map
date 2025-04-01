@@ -78,15 +78,18 @@ Open the sidebar by clicking the **›** icon to the left.
 - Adjust these parameters to see how they impact the agent's learning:
     - **Episodes**: In reinforcement learning, an episode is a complete sequence of steps taken by an agent—from the initial state to a terminal state (like winning, losing, or reaching a time limit).
     It’s one full trial where the agent interacts with the environment, makes decisions, receives rewards, and learns from the outcome.
-    Think of it as a single trial-and-error run, where the agent tries a strategy, sees how it goes, and uses that experience to improve next time.
+    Think of it as a single trial-and-error run, where the agent tries a strategy, sees how it goes, and uses that experience to improve next time.""")
+st.markdown("""
     - **Learning Rate (α)**: Controls how much new information overrides old knowledge.
     A high learning rate means the agent quickly adapts based on recent rewards. A low rate makes it learn more cautiously, averaging over time.
-    Think of it as how fast the agent "trusts" new experiences.
+    Think of it as how fast the agent "trusts" new experiences.""")
+st.markdown("""
     - **Discount Factor (γ)**: Determines how much the agent cares about future rewards compared to immediate ones.
-    A value close to 1 means the agent values long-term gains whereas a value near 0 makes the agent pursue quick wins.
+    A value close to 1 means the agent values long-term gains whereas a value near 0 makes the agent pursue quick wins. """)
+st.markdown("""
     - **Exploration Rate (ε)**: Sets the probability that the agent tries something new instead of picking what it currently thinks is best.
-    Higher ε means more random moves (exploration); lower ε means the agent sticks to what it already knows (exploitation).
-""")
+    Higher ε means more random moves (exploration); lower ε means the agent sticks to what it already knows (exploitation). .""")
+
 
 if "trained" not in st.session_state:
     st.session_state.trained = False
