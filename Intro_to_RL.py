@@ -74,9 +74,11 @@ st.markdown("""
 Let's watch a Reinforcement Learning agent learn how to play Blackjack through **Q-learning**. 
 
 ### 🎛️ Interactive Parameters
-Open the sidebar by clicking the **›** icon to the left.
+Open the sidebar by clicking the **›** icon to the left.""")
+st.markdown("""
 Adjust these parameters to see how they impact the agent's learning:
-
+""")
+st.markdown("""
     - **Episodes**: In reinforcement learning, an episode is a complete sequence of steps taken by an agent—from the initial state to a terminal state (like winning, losing, or reaching a time limit).
     It’s one full trial where the agent interacts with the environment, makes decisions, receives rewards, and learns from the outcome.
     Think of it as a single trial-and-error run, where the agent tries a strategy, sees how it goes, and uses that experience to improve next time.""")
